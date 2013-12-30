@@ -1,0 +1,24 @@
+Running The Python Script
+#####################
+
+Save the python script into a folder and drop your enroute-gps.png file along side enroute-gps.py. Here is what your program directory should contain the following files if you have a GPS connected:
+1.enroute-gps(python script)
+2.enroute-gps-Map(The Map)
+
+You will select to either run the program with a GPS device connected or you can load your own GPS NMEA sentences into a file called nmea.txt. Since you have your GPS connected, you will select your COM port and be presented with two mapping options: a position map...
+
+The nmea.txt file will automatically be created if you have your GPS connected. If you don't have a GPS connected and you already have NMEA sentences to be displayed, create a file called 'nmea.txt' and drop the data into the file.
+
+NOTE: If you don't have a GPS connected and you try to run the program, you will get out-of-bound errors from the parsing
+
+Connecting The GPS to A Computer
+############################
+
+The GPS is directly connected to your computer over serial to USB.
+Once you open the serial port to your GPS, the nmea.txt file will automatically be created and raw GPS NMEA data, specifically GPGGA sentences, will be logged in a private thread. When you make a map selection, the nmea.txt file is copied into a file called temp.txt, which is parsed for latitude and longitude (or altitude). The temp.txt file is created to parse the data so that we don't corrupt or happen to change the main nmea.txt log file. 
+
+The maps are generated in their own windows with options to save, zoom, and hover your mouse over points to get fine grain x,y coordinates. 
+
+Also, the maps don't refresh automatically, so as your GPS logs data, you will need to close the map window and run the map generation commands to get new data. If you close the entire Python program, the logging to nmea.txt halts. 
+
+Actually, you don’t need a GPS at all if you already have the NMEA sentences . You can put your own NMEA sentences in a txt file called nmea.txt and the program will parse that file, then plot the positions. Make sure you are using NMEA GGA sentences since that is what the parser looks for.
